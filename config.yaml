@@ -27,5 +27,7 @@ general_settings:
   database_connection_pool_limit: 5
   # Метрики отдаются на отдельном порту 4001 только Prometheus; на публичном 4000 — с ключом.
   require_auth_for_metrics_endpoint: true
+  # В UI входят только админы через SSO Forgejo (см. Dockerfile); главный админ — PROXY_ADMIN_ID.
+  ui_access_mode: "admin_only"
   # Клиенты приходят через Traefik кластера.
   trusted_proxy_ranges: ["10.0.0.0/8"]
