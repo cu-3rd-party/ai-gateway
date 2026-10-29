@@ -16,7 +16,8 @@ ENV PROXY_BASE_URL=https://ai.cu3rd.ru \
     GENERIC_SCOPE="openid profile email" \
     GENERIC_USER_ID_ATTRIBUTE=sub \
     GENERIC_USER_EMAIL_ATTRIBUTE=email \
-    GENERIC_USER_DISPLAY_NAME_ATTRIBUTE=name
+    GENERIC_USER_DISPLAY_NAME_ATTRIBUTE=name \
+    GENERIC_CLIENT_USE_PKCE=true
 
 # self-service запускает поды с UID/GID 10001.
 USER 10001:10001
