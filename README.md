@@ -20,22 +20,8 @@ curl "$AI_BASE_URL/chat/completions" -H "Authorization: Bearer $AI_API_KEY" \
   -d '{"model": "openai/gpt-4o-mini", "messages": [{"role": "user", "content": "ping"}]}'
 ```
 
-Ключи для людей(или внешних сервисов вне нашей инфрастуктуры) выдаются вручную в `https://ai.cu3rd.ru/ui`. Вход — через Forgejo (SSO), только для админов:
-главный админ задаётся переменной `PROXY_ADMIN_ID` (id пользователя Forgejo), остальных админов создают в UI.
-Бесплатный SSO LiteLLM — до 5 пользователей. Вход по master key в UI отключён, ключ остаётся для API.
+Ключи для людей(или внешних сервисов вне нашей инфрастуктуры) выдаются вручную в `https://ai.cu3rd.ru/ui`. Нужно зайти к @xfx1337 или @pxc1984
 
-## Настройка репозитория
-
-Settings → Actions → Secrets:
-
-| Secret | Значение |
-|---|---|
-| `OPENROUTER_API_KEY` | Ключ OpenRouter организации (с лимитом расходов в кабинете OpenRouter) |
-| `LITELLM_MASTER_KEY` | `sk-` + случайная строка; тот же ключ — `TF_VAR_litellm_master_key` в runtime.env на nxs |
-| `LITELLM_SALT_KEY` | Случайная строка; **не менять** после первого запуска |
-| `SELF_SERVICE_DELIVERY_TOKEN` | Токен доставки self-service |
-
-Сгенерировать: `python3 -c "import secrets; print('sk-' + secrets.token_urlsafe(32))"`.
 
 ## Обновление LiteLLM
 
