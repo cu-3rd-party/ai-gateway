@@ -17,7 +17,13 @@ ENV PROXY_BASE_URL=https://ai.cu3rd.ru \
     GENERIC_USER_ID_ATTRIBUTE=sub \
     GENERIC_USER_EMAIL_ATTRIBUTE=email \
     GENERIC_USER_DISPLAY_NAME_ATTRIBUTE=name \
-    GENERIC_CLIENT_USE_PKCE=true
+    GENERIC_CLIENT_USE_PKCE=true \
+    AUTO_REDIRECT_UI_LOGIN_TO_SSO=true
+
+# Swagger/ReDoc/openapi.json наружу не отдаём.
+ENV NO_DOCS=true \
+    NO_REDOC=true \
+    NO_OPENAPI=true
 
 # self-service запускает поды с UID/GID 10001.
 USER 10001:10001
