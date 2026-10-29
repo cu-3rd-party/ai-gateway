@@ -29,5 +29,7 @@ general_settings:
   require_auth_for_metrics_endpoint: true
   # В UI входят только админы через SSO Forgejo (см. Dockerfile); главный админ — PROXY_ADMIN_ID.
   ui_access_mode: "admin_only"
+  # Вход в UI по master key отключён: только SSO. Сам ключ работает для API.
+  disable_env_credential_login: true
   # Клиенты приходят через Traefik кластера.
   trusted_proxy_ranges: ["10.0.0.0/8"]
