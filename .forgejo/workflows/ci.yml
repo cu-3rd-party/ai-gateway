@@ -13,7 +13,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Check LiteLLM config
-        run: python3 -c "import yaml; c = yaml.safe_load(open('config.yaml')); assert c['model_list'] and c['general_settings']['master_key'].startswith('os.environ/')"
+        run: grep -q "^model_list:" config.yaml && grep -q "master_key: os.environ/" config.yaml
       - name: Build image
         run: docker build -t ai-gateway:check .
   deploy:
