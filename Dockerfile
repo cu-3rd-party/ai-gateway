@@ -8,6 +8,16 @@ ENV LITELLM_MODE=PRODUCTION \
     LITELLM_LOG=ERROR \
     PROMETHEUS_METRICS_PORT=4001
 
+# SSO через Forgejo. GENERIC_CLIENT_ID/SECRET и PROXY_ADMIN_ID приходят из self-service.
+ENV PROXY_BASE_URL=https://ai.cu3rd.ru \
+    GENERIC_AUTHORIZATION_ENDPOINT=https://git.cu3rd.ru/login/oauth/authorize \
+    GENERIC_TOKEN_ENDPOINT=https://git.cu3rd.ru/login/oauth/access_token \
+    GENERIC_USERINFO_ENDPOINT=https://git.cu3rd.ru/login/oauth/userinfo \
+    GENERIC_SCOPE="openid profile email" \
+    GENERIC_USER_ID_ATTRIBUTE=sub \
+    GENERIC_USER_EMAIL_ATTRIBUTE=email \
+    GENERIC_USER_DISPLAY_NAME_ATTRIBUTE=name
+
 # self-service запускает поды с UID/GID 10001.
 USER 10001:10001
 EXPOSE 4000 4001
