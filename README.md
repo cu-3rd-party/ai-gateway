@@ -8,7 +8,7 @@ LiteLLM Proxy поверх общего аккаунта OpenRouter: `https://ai
 - `config.yaml` — любая модель OpenRouter по её id, метрики Prometheus, без хранения промптов.
 - CI: на PR собирает образ, на push в `master` публикует его и открывает PR доставки.
 
-## Как сервису получить ключ
+## Как вашему сервису получить ключ
 
 В `projects/<проект>.yaml` self-service добавьте окружению `ai: {enabled: true}`
 (лимиты и список моделей — в README self-service). После merge в контейнере появятся
@@ -20,7 +20,7 @@ curl "$AI_BASE_URL/chat/completions" -H "Authorization: Bearer $AI_API_KEY" \
   -d '{"model": "openai/gpt-4o-mini", "messages": [{"role": "user", "content": "ping"}]}'
 ```
 
-Ключи для людей выдаются вручную в `https://ai.cu3rd.ru/ui`. Вход — через Forgejo (SSO), только для админов:
+Ключи для людей(или внешних сервисов вне нашей инфрастуктуры) выдаются вручную в `https://ai.cu3rd.ru/ui`. Вход — через Forgejo (SSO), только для админов:
 главный админ задаётся переменной `PROXY_ADMIN_ID` (id пользователя Forgejo), остальных админов создают в UI.
 Бесплатный SSO LiteLLM — до 5 пользователей. Вход по master key в UI отключён, ключ остаётся для API.
 
