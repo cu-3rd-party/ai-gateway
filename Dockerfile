@@ -20,6 +20,11 @@ ENV PROXY_BASE_URL=https://ai.cu3rd.ru \
     GENERIC_CLIENT_USE_PKCE=true \
     AUTO_REDIRECT_UI_LOGIN_TO_SSO=true
 
+# База через transaction-пулер PgBouncer: сессионный advisory lock Prisma (migrate deploy)
+# может остаться висеть на чужом серверном соединении, и следующий старт упрётся в таймаут.
+# Мигрирует одна реплика, свой транзакционный lock у LiteLLM остаётся.
+ENV PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK=1
+
 # Swagger/ReDoc/openapi.json наружу не отдаём.
 ENV NO_DOCS=true \
     NO_REDOC=true \
